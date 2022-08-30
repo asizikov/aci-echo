@@ -2,7 +2,7 @@ name: build-application
 
 on:
   push:
-    branches: [ master, main ]
+    branches: [ main, feature/* ]
 
 jobs:
   build:
@@ -20,6 +20,10 @@ jobs:
       run: dotnet restore
     - name: Build
       run: dotnet build --configuration Release --no-restore
+
+    - name: Build docker image
+      run: docker build -t $GITHUB_REPOSITORY:$GITHUB_SHA -f src/Echo.Api/Dockerfile src/Echo.Api/
+    
     # - name: Build and push Docker images
     #   uses: docker/build-push-action@v1.1.0
     #   with:

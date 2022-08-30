@@ -4,6 +4,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Echo.Api", "src\Echo.Api\Ec
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{65452344-067E-474E-AD92-37FC6048C372}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".github", ".github", "{9C298584-0C03-4C43-A33A-45FC15C6C11E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{59DE7E2F-C831-478B-A092-E17DC35FBCA7}"
+	ProjectSection(SolutionItems) = preProject
+		.github\workflows\dotnet-core.yml = .github\workflows\dotnet-core.yml
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -17,5 +24,6 @@ Global
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{70DD7F81-AB79-4602-9EB4-6552A6A87DA3} = {65452344-067E-474E-AD92-37FC6048C372}
+		{59DE7E2F-C831-478B-A092-E17DC35FBCA7} = {9C298584-0C03-4C43-A33A-45FC15C6C11E}
 	EndGlobalSection
 EndGlobal

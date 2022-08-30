@@ -1,4 +1,6 @@
-﻿using System.Threading;
+﻿using System.Collections.Generic;
+using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -24,8 +26,8 @@ public class EchoController : ControllerBase
     {
         _logger.LogInformation("Received message: {Message}", message);
 
-        var from  = _appNameProvider.GetAppName() is null ? string.Empty : _appNameProvider.GetAppName();
-            
+        var from = _appNameProvider.GetAppName() is null ? string.Empty : _appNameProvider.GetAppName();
+
         return Task.FromResult(new Response
             {
                 Message = $"{message} {from}"
