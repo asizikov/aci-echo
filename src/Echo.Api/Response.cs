@@ -1,4 +1,4 @@
-namespace Echo.Api
+namespace Echo.Api;
 
 public class Response
 {
