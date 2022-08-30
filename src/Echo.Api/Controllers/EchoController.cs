@@ -13,20 +13,22 @@ namespace Echo.Api.Controllers
     public class EchoController : ControllerBase
     {
         private readonly ILogger<EchoController> _logger;
+        private readonly IAppNameProvider _appNameProvider;
 
-        public EchoController(ILogger<EchoController> logger)
+        public EchoController(ILogger<EchoController> logger, IAppNameProvider appNameProvider)
         {
             _logger = logger;
+            _appNameProvider = appNameProvider.GetAppName();
         }
 
 
         [HttpGet]
         public Task<Response> Post(string message, CancellationToken token)
-        {          
-            var from = Environment.GetEnvironmentVariable(Constants.APP_NAME) is null
-                ? string.Empty
-                : $"from {Environment.GetEnvironmentVariable(Constants.APP_NAME)}";
+        {
+            _logger.LogInformation($"Received message: {message}");
 
+            var from  = _appNameProvider.GetAppName() is null ? string.Empty : _appNameProvider.GetAppName();
+            
             return Task.FromResult(new Response
                 {
                     Message = $"{message} {from}"
