@@ -20,6 +20,5 @@ jobs:
       run: dotnet restore
     - name: Build
       run: dotnet build --configuration Release --no-restore
-
-    - name: Build docker image
-      run: docker build -t $GITHUB_REPOSITORY:$GITHUB_SHA -f src/Echo.Api/Dockerfile src/Echo.Api/    
+    - name: Test
+      run: dotnet test --configuration Release --no-restore  
