@@ -22,14 +22,15 @@ jobs:
       run: dotnet build --configuration Release --no-restore
     - name: Test
       run: dotnet test --configuration Release --no-restore  
-    # run unit tests and upload test results to github actions
-    - name: Test and upload test results
-      run: dotnet test --configuration Release --no-restore --logger "xunit;LogFileName=test-results.xml"
-    # upload test results to github actions
+    # run unit tests and save resutls as xml and  upload to github actions
+    - name: Unit tests
+      run: dotnet test --configuration Release --no-restore --logger:"xunit;LogFilePath=./test-results.xml"
     - name: Upload test results
       uses: actions/upload-artifact@v1
       with:
         name: test-results.xml
         path: test-results.xml
         target-path: test-results.xml
+
+
 
