@@ -27,7 +27,6 @@ jobs:
       uses: actions/upload-artifact@v1
       with:
         name: test-results.xml
-        path: test-results.xml
-
+        path: .
 
 
