@@ -19,9 +19,7 @@ jobs:
     - name: Install dependencies
       run: dotnet restore
     - name: Build
-      run: dotnet build --configuration Release --no-restore
-    - name: Test
-      run: dotnet test --configuration Release --no-restore  
+      run: dotnet build --configuration Release --no-restore    
     # run unit tests and save resutls as xml and  upload to github actions
     - name: Unit tests
       run: dotnet test --configuration Release --no-restore --logger:"xunit;LogFilePath=./test-results.xml"
@@ -30,7 +28,6 @@ jobs:
       with:
         name: test-results.xml
         path: test-results.xml
-        target-path: test-results.xml
 
 
 
