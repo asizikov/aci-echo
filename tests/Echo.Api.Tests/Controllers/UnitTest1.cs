@@ -7,45 +7,43 @@ namespace Echo.Api.Tests.Controllers;
 
 public class EchoControllerTests
 {
-    // test that GetMessage returns the message passed in the request
+    // TODO: Add tests for the EchoController
     [Fact]
-    public async Task GetMessage_ReturnsMessage()
+    public async Task Echo_ReturnsEchoMessage()
     {
         // Arrange
-        //create NullLogger
-        var logger = new NullLogger<EchoController>();
-        //create mock IAppNameProvider
+        var logger = new Mock<ILogger<EchoController>>();
+        // create a mocked AppNameProvider
         var appNameProvider = new Mock<IAppNameProvider>();
+        //set the mocked AppNameProvider's GetAppName method to return "Echo"
         appNameProvider.Setup(x => x.GetAppName()).Returns("Echo");
-        // create controller with dependencies
-        var controller = new EchoController(logger, appNameProvider.Object);
-        var message = "Hello World";
-        var expected = "Hello World Echo";
+        
+        var controller = new EchoController(logger.Object, appNameProvider.Object);
+        var message = "Hello World!";
+        var expected = new Response { Message = "Hello World! Echo" };
         // Act
         var result = await controller.GetMessage(message, CancellationToken.None);
-        // Assert that result contains the message
-        Assert.Equal(expected, result.Message);
-        
+        // Assert
+        Assert.Equal(expected.Message, result.Message);
     }
     
-    //test that controller constructor throws exception if logger is null
+    // contstructor throws when logger is null
     [Fact]
-    public void Constructor_ThrowsExceptionIfLoggerIsNull()
+    public void EchoController_Throws_WhenLoggerIsNull()
     {
         // Arrange
-        var logger = null as ILogger<EchoController>;
-        // Act and Assert
-        Assert.Throws<ArgumentNullException>(() => new EchoController(logger, new Mock<IAppNameProvider>().Object));
+        var appNameProvider = new Mock<IAppNameProvider>();
+        // Act & Assert
+        Assert.Throws<ArgumentNullException>(() => new EchoController(null, appNameProvider.Object));
     }
-
-    //test that controller constructor throws exception if appNameProvider is null
+    
+    // contstructor throws when appNameProvider is null
     [Fact]
-    public void Constructor_ThrowsExceptionIfAppNameProviderIsNull()
+    public void EchoController_Throws_WhenAppNameProviderIsNull()
     {
         // Arrange
-        var logger = new Mock<ILogger<EchoController>>().Object;
-        var appNameProvider = null as IAppNameProvider;
-        // Act and Assert
-        Assert.Throws<ArgumentNullException>(() => new EchoController(logger, appNameProvider));
+        var logger = new Mock<ILogger<EchoController>>();
+        // Act & Assert
+        Assert.Throws<ArgumentNullException>(() => new EchoController(logger.Object, null));
     }
 }

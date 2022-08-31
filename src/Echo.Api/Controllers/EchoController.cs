@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
@@ -17,6 +15,7 @@ public class EchoController : ControllerBase
 
     public EchoController(ILogger<EchoController> logger, IAppNameProvider appNameProvider)
     {
+        // throw when parameter is null
         _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         _appNameProvider = appNameProvider ?? throw new ArgumentNullException(nameof(appNameProvider));
     }
