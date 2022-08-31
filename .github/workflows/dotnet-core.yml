@@ -16,6 +16,20 @@ jobs:
     # build application
     - name: Build application
       run: dotnet build
+    # run unit tests, save tests results as xml file, and publish results as artifact
+    - name: Run unit tests
+      run: dotnet test --logger:"xunit;LogFilePath=/test-results/test-results.xml"
+    - name: Publish test results
+      uses: actions/artifact@v2
+      with:
+        name: test-results.xml
+        path: /test-results
+
+
+
+    
+
+
       
     
 
