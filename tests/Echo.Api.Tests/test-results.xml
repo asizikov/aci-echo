@@ -1,14 +1,14 @@
-<assemblies timestamp="08/31/2022 13:04:24">
-  <assembly name="/Users/asizikov/code/demos/aci-echo/tests/Echo.Api.Tests/bin/Release/net6.0/Echo.Api.Tests.dll" run-date="2022-08-31" run-time="13:04:24" total="3" passed="3" failed="0" skipped="0" time="1.354" errors="0">
+<assemblies timestamp="08/31/2022 15:22:48">
+  <assembly name="/Users/asizikov/code/demos/aci-echo/tests/Echo.Api.Tests/bin/Release/net6.0/Echo.Api.Tests.dll" run-date="2022-08-31" run-time="15:22:48" total="3" passed="3" failed="0" skipped="0" time="1.300" errors="0">
     <errors />
-    <collection total="3" passed="3" failed="0" skipped="0" name="Test collection for Echo.Api.Tests.Controllers.EchoControllerTests" time="0.078">
-      <test name="Echo.Api.Tests.Controllers.EchoControllerTests.Echo_ReturnsEchoMessage" type="Echo.Api.Tests.Controllers.EchoControllerTests" method="Echo_ReturnsEchoMessage" time="0.0764158" result="Pass">
+    <collection total="3" passed="3" failed="0" skipped="0" name="Test collection for Echo.Api.Tests.Controllers.EchoControllerTests" time="0.072">
+      <test name="Echo.Api.Tests.Controllers.EchoControllerTests.Echo_ReturnsEchoMessage" type="Echo.Api.Tests.Controllers.EchoControllerTests" method="Echo_ReturnsEchoMessage" time="0.0709764" result="Pass">
         <traits />
       </test>
-      <test name="Echo.Api.Tests.Controllers.EchoControllerTests.EchoController_Throws_WhenLoggerIsNull" type="Echo.Api.Tests.Controllers.EchoControllerTests" method="EchoController_Throws_WhenLoggerIsNull" time="0.0010485" result="Pass">
+      <test name="Echo.Api.Tests.Controllers.EchoControllerTests.EchoController_Throws_WhenLoggerIsNull" type="Echo.Api.Tests.Controllers.EchoControllerTests" method="EchoController_Throws_WhenLoggerIsNull" time="0.0010679" result="Pass">
         <traits />
       </test>
-      <test name="Echo.Api.Tests.Controllers.EchoControllerTests.EchoController_Throws_WhenAppNameProviderIsNull" type="Echo.Api.Tests.Controllers.EchoControllerTests" method="EchoController_Throws_WhenAppNameProviderIsNull" time="0.0001138" result="Pass">
+      <test name="Echo.Api.Tests.Controllers.EchoControllerTests.EchoController_Throws_WhenAppNameProviderIsNull" type="Echo.Api.Tests.Controllers.EchoControllerTests" method="EchoController_Throws_WhenAppNameProviderIsNull" time="0.0001203" result="Pass">
         <traits />
       </test>
     </collection>

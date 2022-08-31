@@ -3,10 +3,15 @@ name: build-application
 on:
   push:
     branches: [ main, feature/* ]
+    
+  # tests results path is the path to the folder where the test results are stored
+  - env:
+      - name: TEST_RESULTS_PATH
+        value: /tmp/test-results
+ 
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     steps:
@@ -20,13 +25,19 @@ jobs:
       run: dotnet restore
     - name: Build
       run: dotnet build --configuration Release --no-restore    
-    # run unit tests and save resutls as xml and  upload to github actions
-    - name: Unit tests
-      run: dotnet test --configuration Release --no-restore --logger:"xunit;LogFilePath=./../test-results.xml"
+# run unit tests, save results as xml into TEST_RESULTS_PATH, and upload them as artifacts
+    - name: Run unit tests
+      run: dotnet test --configuration Release --no-restore --logger:"xunit;LogFilePath=$TEST_RESULTS_PATH/test-results.xml"
+    #upload content of TEST_RESULTS_PATH as artifacts
     - name: Upload test results
       uses: actions/upload-artifact@v1
       with:
         name: test-results.xml
-        path: .
+        path: $TEST_RESULTS_PATH
+        target-path: test-results
 
 
+
+
+
+    
