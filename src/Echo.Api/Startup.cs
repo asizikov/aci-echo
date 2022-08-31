@@ -28,9 +28,8 @@ public class Startup
         if (env.IsDevelopment())
         {
             app.UseDeveloperExceptionPage();
+            app.UseHttpsRedirection();
         }
-
-        app.UseHttpsRedirection();
 
         app.UseRouting();
 
