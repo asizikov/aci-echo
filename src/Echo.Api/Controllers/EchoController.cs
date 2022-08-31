@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -16,13 +17,13 @@ public class EchoController : ControllerBase
 
     public EchoController(ILogger<EchoController> logger, IAppNameProvider appNameProvider)
     {
-        _logger = logger;
-        _appNameProvider = appNameProvider;
+        _logger = logger ?? throw new ArgumentNullException(nameof(logger));
+        _appNameProvider = appNameProvider ?? throw new ArgumentNullException(nameof(appNameProvider));
     }
 
 
     [HttpGet]
-    public Task<Response> Post(string message, CancellationToken token)
+    public Task<Response> GetMessage(string message, CancellationToken token)
     {
         _logger.LogInformation("Received message: {Message}", message);
 

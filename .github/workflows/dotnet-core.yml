@@ -15,32 +15,14 @@ jobs:
     - name: Install dotnet
       uses: actions/setup-dotnet@v2
       with:
-        dotnet-version: '6.0.x'
+        dotnet-version: '6.0.x'    
     - name: Install dependencies
       run: dotnet restore
     - name: Build
       run: dotnet build --configuration Release --no-restore
+      
+    - name: Test
+      run: dotnet test --configuration Release --no-restore
 
     - name: Build docker image
-      run: docker build -t $GITHUB_REPOSITORY:$GITHUB_SHA -f src/Echo.Api/Dockerfile src/Echo.Api/
-    
-    # - name: Build and push Docker images
-    #   uses: docker/build-push-action@v1.1.0
-    #   with:
-    #     username: ${{ secrets.DOCKER_HUB_USERNAME }}
-    #     password: ${{ secrets.DOCKER_HUB_PWD }}
-    #     repository: asizikov/echo-api
-    #     tag_with_ref: true
-    #     tag_with_sha: trueg
-    #     path: src/Echo.Api
-    #     add_git_labels: true
-    # - name: Azure CLI Login
-    #   uses: Azure/login@v1
-    #   with:
-    #     creds: ${{secrets.AZURE_CREDENTIALS}}
-    # - name: Create ACI resouce
-    #   uses: Azure/cli@v1.0.0
-    #   with:
-    #     inlineScript: |
-    #       az container create -g rg-aci-echo -l westeurope -n aci-echo-api --image asizikov/echo-api:latest --cpu 1 --memory 0.5 --dns-name-label echo-api --ip-address Public
-      
+      run: docker build -t $GITHUB_REPOSITORY:$GITHUB_SHA -f src/Echo.Api/Dockerfile src/Echo.Api/    
