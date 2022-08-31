@@ -5,15 +5,14 @@ on:
     branches: [ main, feature/* ]
     
   # tests results path is the path to the folder where the test results are stored
-  - env:
-      - name: TEST_RESULTS_PATH
-        value: /tmp/test-results
+env:
+  - name: TEST_RESULTS_PATH
+    value: /tmp/test-results
  
 
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
     - uses: actions/checkout@v3
        
