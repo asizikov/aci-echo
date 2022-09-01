@@ -15,12 +15,11 @@ public class EchoController : ControllerBase
 
     public EchoController(ILogger<EchoController> logger, IAppNameProvider appNameProvider)
     {
-        // throw when parameter is null
+        // throw exception when parameters are null
         _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         _appNameProvider = appNameProvider ?? throw new ArgumentNullException(nameof(appNameProvider));
     }
-
-
+    
     [HttpGet]
     public Task<Response> GetMessage(string message, CancellationToken token)
     {

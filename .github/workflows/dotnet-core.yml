@@ -10,20 +10,17 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    # restore dependencies
     - name: Install dependencies
       run: dotnet restore
-    # build application
     - name: Build application
       run: dotnet build
-    # run unit tests, save tests results as xml file, and publish results as artifact
     - name: Run unit tests
-      run: dotnet test --logger:"xunit;LogFilePath=/test-results/test-results.xml"
-    - name: Publish test results
-      uses: actions/artifact@v2
+      run: dotnet test --logger "xunit;LogFileName=unit-tests-results.xml"
+    - name: Upload unit test results
+      uses: actions/upload-artifact@v2
       with:
-        name: test-results.xml
-        path: /test-results
+        name: unit-test-results
+        path: "**/*.xml"
 
 
 
